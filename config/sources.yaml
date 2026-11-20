@@ -1,0 +1,201 @@
+# Source collections: asset-level licence evidence (checked 2026-11-19 by direct fetch).
+# Every quote below was read from the URL named next to it during this audit.
+# commercial_ml_training: whether the licence permits training a model for commercial use
+# (VidAIO rules, docs/MINING.md "Licences": CC0 / CC-BY accepted; CC BY-SA accepted per the
+# 2026-10-28 ruling; NC / ND / research-only rejected).
+
+collections:
+
+  xiph_bbb3d:
+    title: "Big Buck Bunny — stereoscopic 4K 60 fps rework (left eye used)"
+    category: 3d_rendered
+    group: film_big_buck_bunny
+    creator: "Blender Foundation (2008); stereoscopic/4K/60 fps/HDRI rework by Janus B. Kristensen (2013)"
+    licence: CC-BY-3.0
+    licence_url: https://creativecommons.org/licenses/by/3.0/
+    evidence:
+      - url: https://media.xiph.org/BBB/bbb3d/README.txt
+        quote: "Big Buck Bunny Copyright (C) 2008 Blender Foundation | peach.blender.org Some Rights Reserved. Creative Commons Attribution 3.0 license. ... Stereoscopic / 4K / 60 fps / HDRI changes Copyright (C) 2013 Janus B. Kristensen Some Rights Reserved. Creative Commons Attribution 3.0 license."
+      - url: https://peach.blender.org/about/
+        quote: "The results of the Peach open movie project has been licensed under the Creative Commons Attribution 3.0 license."
+    exclusions: "logos included in the film (Blender, Peach, Creative Commons logos): no logo or credit frames are used"
+    attribution: "Big Buck Bunny (c) 2008 Blender Foundation | peach.blender.org; stereoscopic 4K 60 fps rework (c) 2013 Janus B. Kristensen | bbb3d.renderfarming.net; CC BY 3.0"
+    commercial_ml_training: true
+    access: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/<scene>/<NNNN>.png (Xiph mirror on AWS Open Data; media.xiph.org itself was throttled to ~1 KB/s on 2026-11-19)"
+    master: "PNG 4000x4500 RGB 8-bit, left eye on top (4000x2250), 60 fps (README: 'monoscopic ... -mf fps=60')"
+    fps: "60"
+
+  xiph_sintel4k:
+    title: "Sintel (Durian Open Movie) — 4K PNG frames"
+    category: 3d_rendered
+    group: film_sintel
+    creator: "Blender Foundation | durian.blender.org"
+    licence: CC-BY-3.0
+    licence_url: https://creativecommons.org/licenses/by/3.0/
+    evidence:
+      - url: https://media.xiph.org/sintel/README.txt
+        quote: "These are files from the Durian Open Movie \"Sintel\". They are Copyright (c) Blender Foundation | durian.blender.org Some Rights Reserved. Creative Commons Attribution 3.0 license. http://creativecommons.org/licenses/by/3.0/ excepting logos included in the film"
+    exclusions: "logos (Blender, Sintel, Durian, Creative Commons) — opening logos and end credits are never used"
+    attribution: "Sintel (c) copyright Blender Foundation | durian.blender.org; CC BY 3.0"
+    commercial_ml_training: true
+    access: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/%08d.png ; shot picking on https://download.blender.org/demo/movies/Sintel.2010.1080p.mkv (md5 published alongside)"
+    master: "PNG 4096x1744 RGB 8-bit, 24 fps"
+    fps: "24"
+
+  xiph_dweebs8k:
+    title: "The Daily Dweebs — lossless 8K mono TIFF frames"
+    category: 3d_rendered
+    group: film_daily_dweebs
+    creator: "Blender Animation Studio | dailydweebs.com"
+    licence: CC-BY-SA-4.0
+    licence_url: https://creativecommons.org/licenses/by-sa/4.0/
+    evidence:
+      - url: https://media.xiph.org/dweebs/README.txt
+        quote: "These files are licensed under the Creative Commons Attribution-ShareAlike 4.0 License https://creativecommons.org/licenses/by-sa/4.0/ Attribution to: Blender Animation Studio | dailydweebs.com This is a lossless copy of \"The Daily Dweebs\"."
+    attribution: "The Daily Dweebs (c) Blender Animation Studio | dailydweebs.com; CC BY-SA 4.0"
+    share_alike: "derived references / LR clips that are distributed must be released under CC BY-SA 4.0 with attribution; VidAIO accepts BY-SA training data (ruling 2026-10-28) with credit in LICENSES.md plus an attribution file"
+    commercial_ml_training: true
+    access: "https://s3.amazonaws.com/xiph-media/media.xiph.org/dweebs/tif_8k_mono/%06d.tif"
+    master: "TIFF 8K mono (1440 frames)"
+    fps: "24"
+    fps_note: "README gives no frame rate; 24 fps INFERRED (1440 frames, 1-minute film; Blender Studio productions are 24 fps) — flagged"
+
+  netflix_sdr_segments:
+    title: "Netflix Open Content — SDR shot segments (Sparks, Meridian, Nocturne) from aom_test_materials"
+    category: real_camera
+    group_by: title          # film_sparks / film_meridian / film_nocturne
+    creator: "Netflix, Inc."
+    licence: CC-BY-4.0
+    licence_url: https://creativecommons.org/licenses/by/4.0/
+    evidence:
+      - url: https://opencontent.netflix.com/
+        quote: "Our open source content is available under the Creative Commons Attribution 4.0 International Public License."
+      - url: https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/creative-commons-attribution-4-intl-public-license.txt
+        quote: "(full CC BY 4.0 text in the same folder tree as the SDR segments)"
+      - url: https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/README_SDR.txt
+        quote: "The SDR versions of these sequences have been created from the HDR masters using the Dolby Vision trim pass data. All SDR sequences are 10-bit BT.709."
+      - url: https://github.com/vidAio-subnet/miner-vidaio/blob/main/docs/MINING.md
+        quote: "Accepted training sources (2026-10-26, 2026-10-27): ... Netflix Open Content titles such as Meridian (CC BY 4.0 on Netflix's own Open Content site)"
+    contradiction_note: "Older copies of Meridian and of the Chimera/El Fuente test sequences on media.xiph.org carry CC BY-NC-ND 4.0 notices (e.g. media.xiph.org/video/derf/meridian/.../license.txt, Chimera/Netflix_DinnerScene_Copyright.txt). Those mirror copies are NOT used. Media is fetched only from Netflix's own bucket, where the licensor publishes it under CC BY 4.0 with the licence file in the same tree; VidAIO's ruling accepts exactly this source. Flagged for human confirmation in the licence audit."
+    attribution: "<title> (c) Netflix, Inc., Netflix Open Content, CC BY 4.0"
+    privacy: "identifiable actors appear (Sparks, Meridian): flagged for personality-rights review before any public redistribution"
+    commercial_ml_training: true
+    access: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/<title>/<first>-<last>.zip (JPEG 2000 frames, 10-bit 4:2:0, BT.709; members fetched individually by range)"
+    master: "J2K yuv420p10le; Sparks 4096x2160, Meridian/Nocturne 3840x2160; 59.94/60 fps (rate from the title: Sparks 59.94, Meridian 59.94, Nocturne 60)"
+
+  netflix_elfuente:
+    title: "Netflix Open Content — El Fuente test sequences (4K 60 fps 10-bit y4m)"
+    category: real_camera
+    group: film_el_fuente
+    creator: "Netflix, Inc."
+    licence: CC-BY-4.0
+    licence_url: https://creativecommons.org/licenses/by/4.0/
+    evidence:
+      - url: https://s3.amazonaws.com/download.opencontent.netflix.com/ElFuente/creative-commons-attribution-4-intl-public-license.txt
+        quote: "Our open source content is available under the Creative Commons Attribution 4.0 International Public License. The license is included in its entirety in this file."
+      - url: https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/creative-commons-attribution-4-intl-public-license.txt
+        quote: "Our open source content is available under the Creative Commons Attribution 4.0 International Public License. The license is included in its entirety in this file."
+    contradiction_note: "the Xiph derf copies of these sequences carry CC BY-NC-ND notices (e.g. media.xiph.org/video/derf/ElFuente/Netflix_Boat_Copyright.txt); only Netflix's own bucket copies, with the CC BY 4.0 file in the same folder, are used"
+    attribution: "El Fuente (c) Netflix, Inc., Netflix Open Content, CC BY 4.0"
+    privacy: "FoodMarket shows identifiable members of the public: flagged for review"
+    commercial_ml_training: true
+    access: "https://s3.amazonaws.com/download.opencontent.netflix.com/ElFuente/Netflix_<Name>_4096x2160_60fps_10bit_420.y4m (frames fetched by byte range: 44-byte header, 'FRAME\\n' + 26,542,080 bytes each)"
+    master: "y4m 4096x2160 yuv420p10, header rate F60:1"
+    fps: "60"
+
+  xiph_elephants_dream:
+    title: "Elephants Dream (Orange Open Movie) — original 1080p PNG frames"
+    category: 3d_rendered
+    group: film_elephants_dream
+    creator: "Orange Open Movie Project; (c) 2006 Netherlands Media Art Institute / Montevideo, Blender Foundation"
+    licence: CC-BY-2.5
+    licence_url: https://creativecommons.org/licenses/by/2.5/
+    evidence:
+      - url: https://orange.blender.org/
+        quote: "see a few of the original HD frames, but you don't need the entire sequence for that. The files are, like the other versions of the movie, are available for download under the Creative Commons Attribution 2.5 license. Thanks to Ralph Giles for helping to set this up."
+      - url: https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/15560.png
+        quote: "(end-credit frame of the film itself) This movie is published under a Creative Commons License. For details see http://www.elephantsdream.org"
+    exclusions: "opening titles and end credits (frames >= 13600) are never used"
+    attribution: "Elephants Dream (c) 2006 Netherlands Media Art Institute / Montevideo, Blender Foundation | orange.blender.org; CC BY 2.5"
+    commercial_ml_training: true
+    access: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/<NNNNN>.png (Xiph mirror on AWS Open Data)"
+    master: "PNG 1920x1080 RGB 8-bit (rendered at HD; no downscale needed), 24 fps"
+    fps: "24"
+
+  netflix_chimera_aom:
+    title: "Netflix Open Content — Chimera test sequences (4K 29.97 fps 10-bit 4:2:2 y4m)"
+    category: real_camera
+    group: film_chimera
+    creator: "Netflix, Inc."
+    licence: CC-BY-4.0
+    licence_url: https://creativecommons.org/licenses/by/4.0/
+    evidence:
+      - url: https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/creative-commons-attribution-4-intl-public-license.txt
+        quote: "Our open source content is available under the Creative Commons Attribution 4.0 International Public License. The license is included in its entirety in this file."
+      - url: https://opencontent.netflix.com/
+        quote: "Our open source content is available under the Creative Commons Attribution 4.0 International Public License."
+    contradiction_note: "the Xiph derf copies of Chimera (e.g. Netflix_DinnerScene) carry CC BY-NC-ND notices (media.xiph.org/video/derf/Chimera/Netflix_DinnerScene_Copyright.txt); only Netflix's own aom_test_materials copies, published with the CC BY 4.0 file at the root of the same tree, are used — flagged for human confirmation like Meridian"
+    attribution: "Chimera (c) Netflix, Inc., Netflix Open Content, CC BY 4.0"
+    privacy: "identifiable actors and members of the public: flagged for review before redistribution"
+    commercial_ml_training: true
+    access: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/Chimera/Chimera-<ep>_<W>x2160_2997fps_10bit_422.y4m (frames by byte range)"
+    master: "y4m 3840x2160 / 4096x2160 yuv422p10, 30000/1001 fps"
+    fps: "30000/1001"
+
+  svt_open_content_2022:
+    title: "SVT Open Content Video Test Suite 2022 — Natural Complexity (Rec. 709 SDR masters)"
+    category: real_camera
+    group_by: sequence     # svt_<sequence>: each sequence is one location / recording
+    creator: "Sveriges Television AB (SVT), Video Core team"
+    licence: CC-BY-4.0
+    licence_url: https://creativecommons.org/licenses/by/4.0/
+    evidence:
+      - url: https://svt.github.io/en/content/
+        quote: "Copyright SVT Open Content Video Test Suite 2022 - Natural Complexity is licensed under a Creative Commons Attribution 4.0 International License ."
+      - url: https://svt.github.io/docs/SVT_Open_Content_Video_Test_Suite_2022_Natural_Complexity_v1-3-reduced.pdf
+        quote: "This test suite is licensed under a Creative Commons Attribution 4.0 International License"
+    not_used: "the older 'SVT High Definition Multi Format Test Set - 2006' (non-commercial terms, rejected below) and the synthetic 'SVT Video Quality Test' sequence (not camera footage)"
+    attribution: "SVT Open Content Video Test Suite 2022 – Natural Complexity, (c) Sveriges Television AB, CC BY 4.0"
+    commercial_ml_training: true
+    access: "ftp://svtopencontent.svt.se/pub/svt_videotestsuite_natural_complexity/REC709/<seq>_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov (single JP2 samples fetched by FTP REST ranges after parsing the moov sample table)"
+    master: "QuickTime, lossless JPEG 2000 Y'CbCr 4:4:4 12-bit, BT.709 limited range (measured: Y 256..3757), 3840x2160, 50 fps; Blackmagic URSA Mini Pro 4.6K, 1/100 s shutter"
+    fps: "50 (master) -> 25 (reference: every 2nd frame, no interpolation; 25 fps is in the allowed set, 50 is not)"
+
+  wikimedia_commons:
+    title: "Wikimedia Commons — individually licensed video files (reviewed one by one)"
+    category: real_camera
+    group_by: file         # one group per independent recording (same uploader + same event = one group)
+    creator: "per file (Commons 'Artist' field)"
+    licence: per-file
+    licence_url: per-file
+    evidence:
+      - url: "https://commons.wikimedia.org/wiki/File:<name> (extmetadata LicenseShortName / LicenseUrl / Artist via the Commons API, recorded per clip)"
+        quote: "per file; see metadata/commons_review.jsonl"
+    attribution: "per file: '<title>' by <Artist>, <licence>, via Wikimedia Commons"
+    commercial_ml_training: true
+    access: "https://upload.wikimedia.org/... original file; only the chosen window is kept (stream copy)"
+    master: "WebM VP9/AV1 or Ogg Theora uploads; only files >= 2560 px wide at high bitrate are used so the 1080p downscale removes the upload's compression artefacts"
+
+rejected:
+  - {what: "Xiph derf Netflix_* sequences (Chimera, El Fuente) and Xiph Meridian copy", why: "CC BY-NC-ND 4.0 notices on those copies (non-commercial, no derivatives)", evidence: "https://media.xiph.org/video/derf/Chimera/Netflix_DinnerScene_Copyright.txt"}
+  - {what: "Amazon HDR education reel (derf)", why: "CC BY-NC-ND 4.0", evidence: "https://media.xiph.org/video/derf/amazon/amazon_hdr_education_reel_final_121715_license.txt"}
+  - {what: "SVT sequences on media.xiph.org/svt", why: "'They may be redistributed non-commercially'", evidence: "https://media.xiph.org/svt/README.txt"}
+  - {what: "Blackmagic Production Camera 4K shots (xiph-media/bmd)", why: "no licence statement (README only says where they were retrieved from)", evidence: "https://s3.amazonaws.com/xiph-media/bmd/bmpc4kshots/README.txt"}
+  - {what: "Twitch game recordings (derf/twitch)", why: "public-domain recordings but contain third-party copyrighted game content", evidence: "https://media.xiph.org/video/derf/twitch/copyright.txt"}
+  - {what: "Cosmos Laundromat 2K (Xiph PNG 2048x858; Netflix 2K HDR EXR)", why: "below 1080 lines: a 1080p reference would require upscaling", evidence: "frame header 2048x858"}
+  - {what: "Tears of Steel 1080bis PNG (1920x800)", why: "below 1080 lines (the 4K TIFF set remains a candidate)", evidence: "frame header 1920x800"}
+  - {what: "Elephants Dream via media.xiph.org", why: "not rejected on licence (CC BY 2.5); deferred: the host served 1-2 KB/s during collection", evidence: "https://orange.blender.org/"}
+  - {what: "TUM/LDV, hdgreetings, ITU/VQEG sequences in derf", why: "research-only, commercial-site or unclear licences", evidence: "https://media.xiph.org/video/derf/"}
+  - {what: "Blender Studio open movies as uploaded to Wikimedia Commons (Spring, Sprite Fright, Hero, Coffee Run, Wing It!, Caminandes 1-3, Agent 327 material)", why: "licences fine (CC BY / BY-SA) but every upload is 858-1080 lines at 1.2-3.8 Mbps: below 1080 lines in scope or heavily compressed; no clean 1080p master", evidence: "Commons API imageinfo (width/height/size/duration), 2026-11-20"}
+  - {what: "NRK Flåmsbana / Nordlandsbanen recordings (xiph-media/nrk)", why: "1080p H.264 at ~3.7 Mbps (heavy pre-existing compression) and no licence file on the mirror", evidence: "https://s3.amazonaws.com/xiph-media/nrk/SHA256SUMS.txt"}
+  - {what: "SVT Open Content 2022 'SVT Video Quality Test' and HDR-only 'fireside'", why: "synthetic torture test (not camera footage); fireside exists only as Rec. 2100 HDR (would need tone mapping)", evidence: "ftp://svtopencontent.svt.se/pub/svt_videotestsuite_natural_complexity/"}
+
+candidate_collections:   # researched, not yet used; per-asset review required before download
+  wikimedia_commons_video:
+    category: real_camera
+    group_rule: "one group per uploaded file (independent recording); same uploader + same event = one group"
+    licence_source: "per-file extmetadata LicenseShortName via the Commons API (asset-level)"
+    allow: ["CC0", "Public domain", "CC BY 2.0/2.5/3.0/4.0", "CC BY-SA 2.0/2.5/3.0/4.0"]
+    survey_2026_11_19: "8 queries (filetype:video filew:>1919 <topic>): 393 unique files, 379 on the allow-list at >=1920x1080; many 4K uploads at 100-220 Mbps (VP9/Theora, near-lossless). Saved to data/work/commons_candidates.json"
+    review_needed: "identifiable people (privacy), third-party copyrighted content in frame (screens, logos, music performances), 'own work' claims, ported/national licence variants (e.g. 'CC BY-SA 3.0 au'), FAL (not on the allow-list)"
+    access_terms: "Wikimedia API with a descriptive generic User-Agent, sequential requests, back-off on 'cirrussearch-too-busy'"

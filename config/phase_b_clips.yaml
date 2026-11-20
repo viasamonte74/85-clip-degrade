@@ -1,0 +1,302 @@
+# Phase B: expansion toward 240 originals (the 24 pilot clips stay as they are, in config/pilot_clips.yaml).
+# Windows were chosen by eye from previews (tools/preview_candidates.py, data/work/previews/) and the
+# Sintel proxy shot table; logos, titles and credits are never used. 'group' is the split unit.
+# Per-film caps keep any one parent work to <= 10 clips (BBB 8, Sintel 10, ED 8 ...).
+# Sections are appended as sources are reviewed: films (this block), SVT, Wikimedia Commons,
+# procedural Blender renders, screen renders.
+
+clips:
+  # ================================================================== 3D rendered: open films
+  # ---- Big Buck Bunny, stereoscopic 4K 60 fps rework (left eye) — pilot has 01_04, 06_01, 10_02
+  - {id: r3d_bbb3d_0302, category: 3d_rendered, subcategory: natural_environment, collection: xiph_bbb3d, group: film_big_buck_bunny,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/03_02/{n:04d}.png",
+     first: 401, frames: 480, fps: "60", source_crop: [4000, 2250, 0, 0], orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_bbb3d_0810p, category: 3d_rendered, subcategory: natural_environment, collection: xiph_bbb3d, group: film_big_buck_bunny,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/08_10/{n:04d}.png",
+     first: 41, frames: 240, fps: "60", source_crop: [4000, 2250, 0, 0], orientation: portrait, trim_to_longest_shot: true}
+  - {id: r3d_bbb3d_1208, category: 3d_rendered, subcategory: fast_motion, collection: xiph_bbb3d, group: film_big_buck_bunny,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/12_08/{n:04d}.png",
+     first: 301, frames: 600, fps: "60", source_crop: [4000, 2250, 0, 0], orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_bbb3d_0502, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_bbb3d, group: film_big_buck_bunny,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/05_02/{n:04d}.png",
+     first: 41, frames: 360, fps: "60", source_crop: [4000, 2250, 0, 0], orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_bbb3d_0903, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_bbb3d, group: film_big_buck_bunny,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/09_03/{n:04d}.png",
+     first: 11, frames: 240, fps: "60", source_crop: [4000, 2250, 0, 0], orientation: landscape, trim_to_longest_shot: true}
+
+  # ---- Sintel 4K PNG (24 fps; 1744 lines, so landscape only) — shots from data/work/sintel_shots.json
+  #      first = shot start + 4 (3 frames of margin after the cut; PNG n = proxy frame n-1)
+  - {id: r3d_sintel_snowclimb, category: 3d_rendered, subcategory: natural_environment, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 756, frames: 240, fps: "24", orientation: landscape, shot_from_proxy: [752, 1018]}
+  - {id: r3d_sintel_market, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 3894, frames: 192, fps: "24", orientation: landscape, shot_from_proxy: [3890, 4234]}
+  - {id: r3d_sintel_bamboo, category: 3d_rendered, subcategory: architecture_signs_text, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 7138, frames: 120, fps: "24", orientation: landscape, shot_from_proxy: [7134, 7266]}
+  - {id: r3d_sintel_fire, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 13436, frames: 144, fps: "24", orientation: landscape, shot_from_proxy: [13432, 13751]}
+  - {id: r3d_sintel_mountains, category: 3d_rendered, subcategory: natural_environment, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 16515, frames: 96, fps: "24", orientation: landscape, shot_from_proxy: [16511, 16807]}
+  - {id: r3d_sintel_soup, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 3221, frames: 90, fps: "24", orientation: landscape, shot_from_proxy: [3217, 3315]}
+  - {id: r3d_sintel_portrait, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 6378, frames: 96, fps: "24", orientation: landscape, shot_from_proxy: [6374, 6519]}
+
+  # ---- The Daily Dweebs 8K TIFF (24 fps inferred, flagged) — pilot has windows 400 and 900
+  - {id: r3d_dweebs_c, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_dweebs8k, group: film_daily_dweebs,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/dweebs/tif_8k_mono/{n:06d}.tif",
+     first: 150, frames: 120, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_dweebs_dp, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_dweebs8k, group: film_daily_dweebs,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/dweebs/tif_8k_mono/{n:06d}.tif",
+     first: 650, frames: 120, fps: "24", orientation: portrait, trim_to_longest_shot: true}
+  - {id: r3d_dweebs_e, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_dweebs8k, group: film_daily_dweebs,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/dweebs/tif_8k_mono/{n:06d}.tif",
+     first: 1150, frames: 120, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+
+  # ---- Elephants Dream 1080p PNG (24 fps, CC BY 2.5; credits from frame ~13640 excluded)
+  - {id: r3d_ed_machine, category: 3d_rendered, subcategory: mechanical_rotating, collection: xiph_elephants_dream, group: film_elephants_dream,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/{n:05d}.png",
+     first: 700, frames: 240, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_ed_wires, category: 3d_rendered, subcategory: mechanical_rotating, collection: xiph_elephants_dream, group: film_elephants_dream,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/{n:05d}.png",
+     first: 2380, frames: 240, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_ed_redroom, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: xiph_elephants_dream, group: film_elephants_dream,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/{n:05d}.png",
+     first: 4000, frames: 240, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_ed_faces, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_elephants_dream, group: film_elephants_dream,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/{n:05d}.png",
+     first: 7100, frames: 240, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_ed_gearlight, category: 3d_rendered, subcategory: mechanical_rotating, collection: xiph_elephants_dream, group: film_elephants_dream,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/{n:05d}.png",
+     first: 9300, frames: 240, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_ed_greenroom, category: 3d_rendered, subcategory: architecture_signs_text, collection: xiph_elephants_dream, group: film_elephants_dream,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/{n:05d}.png",
+     first: 10560, frames: 240, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_ed_corridor, category: 3d_rendered, subcategory: architecture_signs_text, collection: xiph_elephants_dream, group: film_elephants_dream,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/{n:05d}.png",
+     first: 11300, frames: 240, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_ed_cables, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_elephants_dream, group: film_elephants_dream,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/ED/ED-1080-png/{n:05d}.png",
+     first: 12100, frames: 240, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+
+  # ---- Sol Levante (Netflix Open Content, CC BY 4.0): 2D hand-drawn/digital anime, placed in the
+  #      'cartoon / stylized' and 'particles' subcategories of the rendered-animation category (flagged: not 3D)
+  - {id: r3d_sollevante_fire, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: netflix_sdr_segments, group: film_sol_levante,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/sol_levante/2268-2412.zip",
+     skip: 12, frames: 120, fps: "24", orientation: landscape, note: "2D animation (not 3D-rendered)"}
+  - {id: r3d_sollevante_particles, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: netflix_sdr_segments, group: film_sol_levante,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/sol_levante/3282-3874.zip",
+     skip: 100, frames: 240, fps: "24", orientation: landscape, note: "2D animation (not 3D-rendered)"}
+  - {id: r3d_sollevante_eyes_p, category: 3d_rendered, subcategory: cartoon_stylized, collection: netflix_sdr_segments, group: film_sol_levante,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/sol_levante/4123-4545.zip",
+     skip: 60, frames: 168, fps: "24", orientation: portrait, trim_to_longest_shot: true,
+     note: "2D animation (not 3D-rendered); v1 window (96 frames from member 60) contained a cut at frame 24 -> widened and trimmed to the longest shot"}
+
+  # ================================================================== real camera: Netflix Open Content
+  - {id: cam_meridian_road, category: real_camera, subcategory: urban_vehicles, collection: netflix_sdr_segments, group: film_meridian,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/meridian/11872-12263.zip",
+     skip: 20, frames: 240, fps: "60000/1001", orientation: landscape, trim_to_longest_shot: true}
+  - {id: cam_meridian_storm, category: real_camera, subcategory: low_light_motion_blur, collection: netflix_sdr_segments, group: film_meridian,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/meridian/20988-21412.zip",
+     skip: 20, frames: 360, fps: "60000/1001", orientation: landscape, privacy_flag: true, trim_to_longest_shot: true}
+  - {id: cam_nocturne_ballet, category: real_camera, subcategory: low_light_motion_blur, collection: netflix_sdr_segments, group: film_nocturne,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/nocturne/27740-28109.zip",
+     skip: 20, frames: 240, fps: "60", orientation: landscape, privacy_flag: true, trim_to_longest_shot: true}
+  - {id: cam_nocturne_stairs_p, category: real_camera, subcategory: people_hands_activity, collection: netflix_sdr_segments, group: film_nocturne,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/nocturne/8540-9009.zip",
+     skip: 30, frames: 360, fps: "60", orientation: portrait, privacy_flag: true, trim_to_longest_shot: true}
+  - {id: cam_sparks_weld_p, category: real_camera, subcategory: people_hands_activity, collection: netflix_sdr_segments, group: film_sparks,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/sparks/5764-6024.zip",
+     skip: 10, frames: 240, fps: "60000/1001", orientation: portrait, privacy_flag: true, trim_to_longest_shot: true}
+  - {id: cam_sparks_yard, category: real_camera, subcategory: animals_foliage_nature, collection: netflix_sdr_segments, group: film_sparks,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/sparks/11198-11570.zip",
+     skip: 20, frames: 300, fps: "60000/1001", orientation: landscape, privacy_flag: true, trim_to_longest_shot: true}
+  - {id: cam_elfuente_tango, category: real_camera, subcategory: people_hands_activity, collection: netflix_elfuente, group: film_el_fuente,
+     kind: y4m_range, y4m_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/ElFuente/Netflix_Tango_4096x2160_60fps_10bit_420.y4m", note: "aom_test_materials tree (CC BY 4.0 licence file at the tree root)",
+     first: 20, frames: 240, fps: "60", orientation: landscape, privacy_flag: true}
+  - {id: cam_elfuente_ritual_p, category: real_camera, subcategory: people_hands_activity, collection: netflix_elfuente, group: film_el_fuente,
+     kind: y4m_range, y4m_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/ElFuente/Netflix_RitualDanceShot_4096x2160_60fps_10bit_420.y4m", note: "aom_test_materials tree (CC BY 4.0 licence file at the tree root)",
+     first: 20, frames: 240, fps: "60", orientation: portrait, privacy_flag: true}
+  - {id: cam_chimera_fountain, category: real_camera, subcategory: water_rain_reflections, collection: netflix_chimera_aom, group: film_chimera,
+     kind: y4m_range, y4m_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/Chimera/Chimera-ep16_4096x2160_2997fps_10bit_422.y4m",
+     first: 100, frames: 240, fps: "30000/1001", orientation: landscape, privacy_flag: true}
+  - {id: cam_chimera_harbour, category: real_camera, subcategory: urban_vehicles, collection: netflix_chimera_aom, group: film_chimera,
+     kind: y4m_range, y4m_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/Chimera/Chimera-ep11_3840x2160_2997fps_10bit_422.y4m",
+     first: 100, frames: 180, fps: "30000/1001", orientation: landscape}
+  - {id: cam_chimera_dinner, category: real_camera, subcategory: people_hands_activity, collection: netflix_chimera_aom, group: film_chimera,
+     kind: y4m_range, y4m_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/Chimera/Chimera-ep01_3840x2160_2997fps_10bit_422.y4m",
+     first: 40, frames: 120, fps: "30000/1001", orientation: landscape, privacy_flag: true}
+
+  # ================================================================== real camera: SVT Open Content 2022 (CC BY 4.0)
+  # Locked-off 4K 50p sequences (one location each = one group); 25 fps references take every 2nd
+  # source frame (step 2, no interpolation). 'first' is the source sample index (50 fps).
+  - {id: cam_svt_forest_lake, category: real_camera, subcategory: water_rain_reflections, collection: svt_open_content_2022, group: svt_forest_lake,
+     kind: ftp_mov_j2k, ftp_host: svtopencontent.svt.se, ftp_path: /pub/svt_videotestsuite_natural_complexity/REC709/forest_lake_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov,
+     first: 400, step: 2, frames: 100, fps: "25", orientation: landscape}
+  - {id: cam_svt_midnight_sun, category: real_camera, subcategory: animals_foliage_nature, collection: svt_open_content_2022, group: svt_midnight_sun,
+     kind: ftp_mov_j2k, ftp_host: svtopencontent.svt.se, ftp_path: /pub/svt_videotestsuite_natural_complexity/REC709/midnight_sun_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov,
+     first: 1200, step: 2, frames: 200, fps: "25", orientation: landscape}
+  - {id: cam_svt_smithy, category: real_camera, subcategory: animals_foliage_nature, collection: svt_open_content_2022, group: svt_smithy,
+     kind: ftp_mov_j2k, ftp_host: svtopencontent.svt.se, ftp_path: /pub/svt_videotestsuite_natural_complexity/REC709/smithy_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov,
+     first: 600, step: 2, frames: 100, fps: "25", orientation: landscape}
+  - {id: cam_svt_smithy_p, category: real_camera, subcategory: urban_vehicles, collection: svt_open_content_2022, group: svt_smithy,
+     kind: ftp_mov_j2k, ftp_host: svtopencontent.svt.se, ftp_path: /pub/svt_videotestsuite_natural_complexity/REC709/smithy_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov,
+     first: 2200, step: 2, frames: 150, fps: "25", orientation: portrait, note: "portrait centre crop (building facade); different time window from cam_svt_smithy"}
+  - {id: cam_svt_smoke_sauna, category: real_camera, subcategory: low_light_motion_blur, collection: svt_open_content_2022, group: svt_smoke_sauna,
+     kind: ftp_mov_j2k, ftp_host: svtopencontent.svt.se, ftp_path: /pub/svt_videotestsuite_natural_complexity/REC709/smoke_sauna_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov,
+     first: 1000, step: 2, frames: 250, fps: "25", orientation: landscape}
+  - {id: cam_svt_water_flyover, category: real_camera, subcategory: water_rain_reflections, collection: svt_open_content_2022, group: svt_water_flyover,
+     kind: ftp_mov_j2k, ftp_host: svtopencontent.svt.se, ftp_path: /pub/svt_videotestsuite_natural_complexity/REC709/water_flyover_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov,
+     first: 300, step: 2, frames: 150, fps: "25", orientation: landscape}
+  - {id: cam_svt_waterfall, category: real_camera, subcategory: water_rain_reflections, collection: svt_open_content_2022, group: svt_waterfall,
+     kind: ftp_mov_j2k, ftp_host: svtopencontent.svt.se, ftp_path: /pub/svt_videotestsuite_natural_complexity/REC709/waterfall_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov,
+     first: 500, step: 2, frames: 100, fps: "25", orientation: landscape}
+  - {id: cam_svt_waterfall_p, category: real_camera, subcategory: water_rain_reflections, collection: svt_open_content_2022, group: svt_waterfall,
+     kind: ftp_mov_j2k, ftp_host: svtopencontent.svt.se, ftp_path: /pub/svt_videotestsuite_natural_complexity/REC709/waterfall_JPEG2000_SDR_3840x2160p50_YUV444_12bit_Lossless.mov,
+     first: 2000, step: 2, frames: 250, fps: "25", orientation: portrait, note: "portrait centre crop; different time window from cam_svt_waterfall"}
+
+
+  # ================================================================== generated (tools/plan_generated.py)
+  # procedural Blender renders (CC0, one group per seed) and screen renders (CC0, one group per seed)
+  - {id: r3d_own_forest_3001p, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3001, kind: blender, scene: forest, seed: 3001, width: 1080, height: 1920, fps: '30', frames: 300, samples: 32, engine: eevee, orientation: portrait}
+  - {id: r3d_own_forest_3002p, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3002, kind: blender, scene: forest, seed: 3002, width: 1080, height: 1920, fps: '30', frames: 300, samples: 12, engine: cycles, orientation: portrait}
+  - {id: r3d_own_forest_3003p, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3003, kind: blender, scene: forest, seed: 3003, width: 1080, height: 1920, fps: '30', frames: 240, samples: 32, engine: eevee, orientation: portrait}
+  - {id: r3d_own_forest_3004, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3004, kind: blender, scene: forest, seed: 3004, width: 1920, height: 1080, fps: '30', frames: 240, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_forest_3005, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3005, kind: blender, scene: forest, seed: 3005, width: 1920, height: 1080, fps: '25', frames: 100, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_forest_3006, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3006, kind: blender, scene: forest, seed: 3006, width: 1920, height: 1080, fps: '30', frames: 120, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_forest_3007, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3007, kind: blender, scene: forest, seed: 3007, width: 1920, height: 1080, fps: '24', frames: 168, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_forest_3008, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3008, kind: blender, scene: forest, seed: 3008, width: 1920, height: 1080, fps: '25', frames: 112, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_forest_3009, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3009, kind: blender, scene: forest, seed: 3009, width: 1920, height: 1080, fps: '30', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_forest_3010, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_forest_s3010, kind: blender, scene: forest, seed: 3010, width: 1920, height: 1080, fps: '25', frames: 100, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_terrain_3011p, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_terrain_s3011, kind: blender, scene: terrain, seed: 3011, width: 1080, height: 1920, fps: '24', frames: 240, samples: 32, engine: eevee, orientation: portrait, params: {speed: 13.2}}
+  - {id: r3d_own_terrain_3012, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_terrain_s3012, kind: blender, scene: terrain, seed: 3012, width: 1920, height: 1080, fps: '25', frames: 75, samples: 12, engine: cycles, orientation: landscape, params: {speed: 13.4}}
+  - {id: r3d_own_terrain_3013, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_terrain_s3013, kind: blender, scene: terrain, seed: 3013, width: 1920, height: 1080, fps: '24', frames: 96, samples: 32, engine: eevee, orientation: landscape, params: {speed: 13.0}}
+  - {id: r3d_own_terrain_3014, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_terrain_s3014, kind: blender, scene: terrain, seed: 3014, width: 1920, height: 1080, fps: '24', frames: 240, samples: 12, engine: cycles, orientation: landscape, params: {speed: 13.2}}
+  - {id: r3d_own_terrain_3015, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_terrain_s3015, kind: blender, scene: terrain, seed: 3015, width: 1920, height: 1080, fps: '25', frames: 238, samples: 32, engine: eevee, orientation: landscape, params: {speed: 12.1}}
+  - {id: r3d_own_terrain_3016, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_terrain_s3016, kind: blender, scene: terrain, seed: 3016, width: 1920, height: 1080, fps: '24', frames: 72, samples: 12, engine: cycles, orientation: landscape, params: {speed: 14.2}}
+  - {id: r3d_own_terrain_3017, category: 3d_rendered, subcategory: natural_environment, collection: own_blender_procedural, group: own_blender_terrain_s3017, kind: blender, scene: terrain, seed: 3017, width: 1920, height: 1080, fps: '30', frames: 90, samples: 32, engine: eevee, orientation: landscape, params: {speed: 11.8}}
+  - {id: r3d_own_gears_3018p, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_gears_s3018, kind: blender, scene: gears, seed: 3018, width: 1080, height: 1920, fps: '60', frames: 480, samples: 12, engine: cycles, orientation: portrait}
+  - {id: r3d_own_gears_3019, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_gears_s3019, kind: blender, scene: gears, seed: 3019, width: 1920, height: 1080, fps: '30', frames: 120, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_gears_3020, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_gears_s3020, kind: blender, scene: gears, seed: 3020, width: 1920, height: 1080, fps: '30', frames: 135, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_gears_3021, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_gears_s3021, kind: blender, scene: gears, seed: 3021, width: 1920, height: 1080, fps: '30', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_gears_3022, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_gears_s3022, kind: blender, scene: gears, seed: 3022, width: 1920, height: 1080, fps: '25', frames: 200, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_gears_3023, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_gears_s3023, kind: blender, scene: gears, seed: 3023, width: 1920, height: 1080, fps: '30', frames: 135, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_gears_3024, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_gears_s3024, kind: blender, scene: gears, seed: 3024, width: 1920, height: 1080, fps: '60', frames: 180, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_machine_3025p, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_machine_s3025, kind: blender, scene: machine, seed: 3025, width: 1080, height: 1920, fps: '30', frames: 120, samples: 32, engine: eevee, orientation: portrait}
+  - {id: r3d_own_machine_3026, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_machine_s3026, kind: blender, scene: machine, seed: 3026, width: 1920, height: 1080, fps: '24', frames: 228, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_machine_3027, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_machine_s3027, kind: blender, scene: machine, seed: 3027, width: 1920, height: 1080, fps: '60', frames: 180, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_machine_3028, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_machine_s3028, kind: blender, scene: machine, seed: 3028, width: 1920, height: 1080, fps: '30', frames: 135, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_machine_3029, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_machine_s3029, kind: blender, scene: machine, seed: 3029, width: 1920, height: 1080, fps: '24', frames: 168, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_machine_3030, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_machine_s3030, kind: blender, scene: machine, seed: 3030, width: 1920, height: 1080, fps: '60', frames: 240, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_machine_3031, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_machine_s3031, kind: blender, scene: machine, seed: 3031, width: 1920, height: 1080, fps: '30', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_clock_3032p, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_clock_s3032, kind: blender, scene: clock, seed: 3032, width: 1080, height: 1920, fps: '25', frames: 200, samples: 12, engine: cycles, orientation: portrait}
+  - {id: r3d_own_clock_3033p, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_clock_s3033, kind: blender, scene: clock, seed: 3033, width: 1080, height: 1920, fps: '30', frames: 120, samples: 32, engine: eevee, orientation: portrait}
+  - {id: r3d_own_clock_3034, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_clock_s3034, kind: blender, scene: clock, seed: 3034, width: 1920, height: 1080, fps: '25', frames: 238, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_clock_3035, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_clock_s3035, kind: blender, scene: clock, seed: 3035, width: 1920, height: 1080, fps: '30', frames: 90, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_clock_3036, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_clock_s3036, kind: blender, scene: clock, seed: 3036, width: 1920, height: 1080, fps: '30', frames: 90, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_clock_3037, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_clock_s3037, kind: blender, scene: clock, seed: 3037, width: 1920, height: 1080, fps: '60', frames: 420, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_signs_3038p, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_signs_s3038, kind: blender, scene: signs, seed: 3038, width: 1080, height: 1920, fps: '30', frames: 135, samples: 32, engine: eevee, orientation: portrait}
+  - {id: r3d_own_signs_3039, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_signs_s3039, kind: blender, scene: signs, seed: 3039, width: 1920, height: 1080, fps: '30', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_signs_3040, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_signs_s3040, kind: blender, scene: signs, seed: 3040, width: 1920, height: 1080, fps: '60', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_signs_3041, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_signs_s3041, kind: blender, scene: signs, seed: 3041, width: 1920, height: 1080, fps: '30', frames: 285, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_signs_3042, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_signs_s3042, kind: blender, scene: signs, seed: 3042, width: 1920, height: 1080, fps: '30', frames: 300, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_interior_3043p, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_interior_s3043, kind: blender, scene: interior, seed: 3043, width: 1080, height: 1920, fps: '24', frames: 96, samples: 12, engine: cycles, orientation: portrait}
+  - {id: r3d_own_interior_3044, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_interior_s3044, kind: blender, scene: interior, seed: 3044, width: 1920, height: 1080, fps: '25', frames: 100, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_interior_3045, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_interior_s3045, kind: blender, scene: interior, seed: 3045, width: 1920, height: 1080, fps: '30', frames: 120, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_interior_3046, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_interior_s3046, kind: blender, scene: interior, seed: 3046, width: 1920, height: 1080, fps: '25', frames: 100, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_interior_3047, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_interior_s3047, kind: blender, scene: interior, seed: 3047, width: 1920, height: 1080, fps: '30', frames: 120, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_interior_3048, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_interior_s3048, kind: blender, scene: interior, seed: 3048, width: 1920, height: 1080, fps: '30', frames: 285, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_city_3049, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_city_s3049, kind: blender, scene: city, seed: 3049, width: 1920, height: 1080, fps: '30', frames: 120, samples: 32, engine: eevee, orientation: landscape, params: {speed: 8.8}}
+  - {id: r3d_own_city_3050, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_city_s3050, kind: blender, scene: city, seed: 3050, width: 1920, height: 1080, fps: '30', frames: 240, samples: 32, engine: eevee, orientation: landscape, params: {speed: 4.2}}
+  - {id: r3d_own_city_3051, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_city_s3051, kind: blender, scene: city, seed: 3051, width: 1920, height: 1080, fps: '24', frames: 96, samples: 32, engine: eevee, orientation: landscape, params: {speed: 6.2}}
+  - {id: r3d_own_city_3052p, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_city_s3052, kind: blender, scene: city, seed: 3052, width: 1080, height: 1920, fps: '60', frames: 420, samples: 32, engine: eevee, orientation: portrait}
+  - {id: r3d_own_city_3053, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_city_s3053, kind: blender, scene: city, seed: 3053, width: 1920, height: 1080, fps: '60', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_city_3054, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_city_s3054, kind: blender, scene: city, seed: 3054, width: 1920, height: 1080, fps: '60', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_city_3055, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_city_s3055, kind: blender, scene: city, seed: 3055, width: 1920, height: 1080, fps: '60', frames: 360, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_tunnel_3056p, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_tunnel_s3056, kind: blender, scene: tunnel, seed: 3056, width: 1080, height: 1920, fps: '30', frames: 120, samples: 32, engine: eevee, orientation: portrait}
+  - {id: r3d_own_tunnel_3057, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_tunnel_s3057, kind: blender, scene: tunnel, seed: 3057, width: 1920, height: 1080, fps: '60', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_tunnel_3058, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_tunnel_s3058, kind: blender, scene: tunnel, seed: 3058, width: 1920, height: 1080, fps: '60', frames: 360, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_tunnel_3059, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_tunnel_s3059, kind: blender, scene: tunnel, seed: 3059, width: 1920, height: 1080, fps: '30', frames: 120, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_tunnel_3060, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_tunnel_s3060, kind: blender, scene: tunnel, seed: 3060, width: 1920, height: 1080, fps: '30', frames: 90, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_terrain_3061, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_terrain_s3061, kind: blender, scene: terrain, seed: 3061, width: 1920, height: 1080, fps: '60', frames: 480, samples: 32, engine: eevee, orientation: landscape, params: {speed: 47.1}}
+  - {id: r3d_own_terrain_3062, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_terrain_s3062, kind: blender, scene: terrain, seed: 3062, width: 1920, height: 1080, fps: '60', frames: 480, samples: 12, engine: cycles, orientation: landscape, params: {speed: 63.9}}
+  - {id: r3d_own_terrain_3063, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_terrain_s3063, kind: blender, scene: terrain, seed: 3063, width: 1920, height: 1080, fps: '60', frames: 240, samples: 32, engine: eevee, orientation: landscape, params: {speed: 40.8}}
+  - {id: r3d_own_terrain_3064, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_terrain_s3064, kind: blender, scene: terrain, seed: 3064, width: 1920, height: 1080, fps: '30', frames: 240, samples: 12, engine: cycles, orientation: landscape, params: {speed: 76.7}}
+  - {id: r3d_own_chrome_3065p, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_chrome_s3065, kind: blender, scene: chrome, seed: 3065, width: 1080, height: 1920, fps: '30', frames: 90, samples: 12, engine: cycles, orientation: portrait}
+  - {id: r3d_own_chrome_3066, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_chrome_s3066, kind: blender, scene: chrome, seed: 3066, width: 1920, height: 1080, fps: '24', frames: 144, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_chrome_3067, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_chrome_s3067, kind: blender, scene: chrome, seed: 3067, width: 1920, height: 1080, fps: '24', frames: 228, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_chrome_3068, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_chrome_s3068, kind: blender, scene: chrome, seed: 3068, width: 1920, height: 1080, fps: '24', frames: 96, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_chrome_3069, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_chrome_s3069, kind: blender, scene: chrome, seed: 3069, width: 1920, height: 1080, fps: '24', frames: 108, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_ocean_3070p, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_ocean_s3070, kind: blender, scene: ocean, seed: 3070, width: 1080, height: 1920, fps: '30', frames: 135, samples: 12, engine: cycles, orientation: portrait}
+  - {id: r3d_own_ocean_3071, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_ocean_s3071, kind: blender, scene: ocean, seed: 3071, width: 1920, height: 1080, fps: '25', frames: 75, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_ocean_3072, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_ocean_s3072, kind: blender, scene: ocean, seed: 3072, width: 1920, height: 1080, fps: '30', frames: 135, samples: 12, engine: cycles, orientation: landscape}
+  - {id: r3d_own_particles_3073p, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_particles_s3073, kind: blender, scene: particles, seed: 3073, width: 1080, height: 1920, fps: '25', frames: 250, samples: 12, engine: cycles, orientation: portrait, params: {kind: sparks}}
+  - {id: r3d_own_particles_3074, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_particles_s3074, kind: blender, scene: particles, seed: 3074, width: 1920, height: 1080, fps: '30', frames: 120, samples: 12, engine: cycles, orientation: landscape, params: {kind: snow}}
+  - {id: r3d_own_particles_3075, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_particles_s3075, kind: blender, scene: particles, seed: 3075, width: 1920, height: 1080, fps: '25', frames: 238, samples: 12, engine: cycles, orientation: landscape, params: {kind: sparks}}
+  - {id: r3d_own_particles_3076, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_particles_s3076, kind: blender, scene: particles, seed: 3076, width: 1920, height: 1080, fps: '30', frames: 180, samples: 12, engine: cycles, orientation: landscape, params: {kind: confetti}}
+  - {id: r3d_own_toon_3077p, category: 3d_rendered, subcategory: cartoon_stylized, collection: own_blender_procedural, group: own_blender_toon_s3077, kind: blender, scene: toon, seed: 3077, width: 1080, height: 1920, fps: '24', frames: 240, samples: 32, engine: eevee, orientation: portrait}
+  - {id: r3d_own_toon_3078, category: 3d_rendered, subcategory: cartoon_stylized, collection: own_blender_procedural, group: own_blender_toon_s3078, kind: blender, scene: toon, seed: 3078, width: 1920, height: 1080, fps: '25', frames: 100, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_toon_3079, category: 3d_rendered, subcategory: cartoon_stylized, collection: own_blender_procedural, group: own_blender_toon_s3079, kind: blender, scene: toon, seed: 3079, width: 1920, height: 1080, fps: '30', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_toon_3080, category: 3d_rendered, subcategory: cartoon_stylized, collection: own_blender_procedural, group: own_blender_toon_s3080, kind: blender, scene: toon, seed: 3080, width: 1920, height: 1080, fps: '24', frames: 72, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_toon_3081, category: 3d_rendered, subcategory: cartoon_stylized, collection: own_blender_procedural, group: own_blender_toon_s3081, kind: blender, scene: toon, seed: 3081, width: 1920, height: 1080, fps: '30', frames: 240, samples: 32, engine: eevee, orientation: landscape}
+  - {id: r3d_own_toon_3082, category: 3d_rendered, subcategory: cartoon_stylized, collection: own_blender_procedural, group: own_blender_toon_s3082, kind: blender, scene: toon, seed: 3082, width: 1920, height: 1080, fps: '24', frames: 72, samples: 32, engine: eevee, orientation: landscape}
+  - {id: scr_spreadsheet_5001p, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s5001, kind: screen, scene: spreadsheet, seed: 5001, width: 1080, height: 1920, fps: '25', frames: 250, orientation: portrait}
+  - {id: scr_spreadsheet_5002, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s5002, kind: screen, scene: spreadsheet, seed: 5002, width: 1920, height: 1080, fps: '60', frames: 240, orientation: landscape}
+  - {id: scr_spreadsheet_5003, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s5003, kind: screen, scene: spreadsheet, seed: 5003, width: 1920, height: 1080, fps: '30', frames: 285, orientation: landscape}
+  - {id: scr_spreadsheet_5004, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s5004, kind: screen, scene: spreadsheet, seed: 5004, width: 1920, height: 1080, fps: '30', frames: 285, orientation: landscape}
+  - {id: scr_spreadsheet_5005, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s5005, kind: screen, scene: spreadsheet, seed: 5005, width: 1920, height: 1080, fps: '24', frames: 96, orientation: landscape}
+  - {id: scr_spreadsheet_5006, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s5006, kind: screen, scene: spreadsheet, seed: 5006, width: 1920, height: 1080, fps: '60', frames: 570, orientation: landscape}
+  - {id: scr_spreadsheet_5007, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s5007, kind: screen, scene: spreadsheet, seed: 5007, width: 1920, height: 1080, fps: '30', frames: 285, orientation: landscape}
+  - {id: scr_spreadsheet_5008, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s5008, kind: screen, scene: spreadsheet, seed: 5008, width: 1920, height: 1080, fps: '30', frames: 240, orientation: landscape}
+  - {id: scr_ledger_5009, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_ledger_s5009, kind: screen, scene: ledger, seed: 5009, width: 1920, height: 1080, fps: '30', frames: 180, orientation: landscape}
+  - {id: scr_ledger_5010, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_ledger_s5010, kind: screen, scene: ledger, seed: 5010, width: 1920, height: 1080, fps: '30', frames: 90, orientation: landscape}
+  - {id: scr_ledger_5011, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_ledger_s5011, kind: screen, scene: ledger, seed: 5011, width: 1920, height: 1080, fps: '30', frames: 210, orientation: landscape}
+  - {id: scr_ledger_5012, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_ledger_s5012, kind: screen, scene: ledger, seed: 5012, width: 1920, height: 1080, fps: '60', frames: 240, orientation: landscape}
+  - {id: scr_ledger_5013, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_ledger_s5013, kind: screen, scene: ledger, seed: 5013, width: 1920, height: 1080, fps: '25', frames: 75, orientation: landscape}
+  - {id: scr_ledger_5014, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_ledger_s5014, kind: screen, scene: ledger, seed: 5014, width: 1920, height: 1080, fps: '60', frames: 240, orientation: landscape}
+  - {id: scr_code_5015p, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5015, kind: screen, scene: code, seed: 5015, width: 1080, height: 1920, fps: '25', frames: 100, orientation: portrait}
+  - {id: scr_code_5016p, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5016, kind: screen, scene: code, seed: 5016, width: 1080, height: 1920, fps: '60', frames: 240, orientation: portrait}
+  - {id: scr_code_5017, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5017, kind: screen, scene: code, seed: 5017, width: 1920, height: 1080, fps: '25', frames: 75, orientation: landscape}
+  - {id: scr_code_5018, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5018, kind: screen, scene: code, seed: 5018, width: 1920, height: 1080, fps: '24', frames: 228, orientation: landscape}
+  - {id: scr_code_5019, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5019, kind: screen, scene: code, seed: 5019, width: 1920, height: 1080, fps: '30', frames: 300, orientation: landscape}
+  - {id: scr_code_5020, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5020, kind: screen, scene: code, seed: 5020, width: 1920, height: 1080, fps: '30', frames: 240, orientation: landscape}
+  - {id: scr_code_5021, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5021, kind: screen, scene: code, seed: 5021, width: 1920, height: 1080, fps: '30', frames: 90, orientation: landscape}
+  - {id: scr_code_5022, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5022, kind: screen, scene: code, seed: 5022, width: 1920, height: 1080, fps: '60', frames: 180, orientation: landscape}
+  - {id: scr_code_5023, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s5023, kind: screen, scene: code, seed: 5023, width: 1920, height: 1080, fps: '30', frames: 120, orientation: landscape}
+  - {id: scr_notebook_5024p, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_notebook_s5024, kind: screen, scene: notebook, seed: 5024, width: 1080, height: 1920, fps: '60', frames: 600, orientation: portrait}
+  - {id: scr_notebook_5025, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_notebook_s5025, kind: screen, scene: notebook, seed: 5025, width: 1920, height: 1080, fps: '30', frames: 180, orientation: landscape}
+  - {id: scr_notebook_5026, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_notebook_s5026, kind: screen, scene: notebook, seed: 5026, width: 1920, height: 1080, fps: '30', frames: 210, orientation: landscape}
+  - {id: scr_notebook_5027, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_notebook_s5027, kind: screen, scene: notebook, seed: 5027, width: 1920, height: 1080, fps: '30', frames: 120, orientation: landscape}
+  - {id: scr_notebook_5028, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_notebook_s5028, kind: screen, scene: notebook, seed: 5028, width: 1920, height: 1080, fps: '60', frames: 420, orientation: landscape}
+  - {id: scr_terminal_5029p, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_terminal_s5029, kind: screen, scene: terminal, seed: 5029, width: 1080, height: 1920, fps: '25', frames: 100, orientation: portrait}
+  - {id: scr_terminal_5030p, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_terminal_s5030, kind: screen, scene: terminal, seed: 5030, width: 1080, height: 1920, fps: '25', frames: 238, orientation: portrait}
+  - {id: scr_terminal_5031, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_terminal_s5031, kind: screen, scene: terminal, seed: 5031, width: 1920, height: 1080, fps: '60', frames: 240, orientation: landscape}
+  - {id: scr_terminal_5032, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_terminal_s5032, kind: screen, scene: terminal, seed: 5032, width: 1920, height: 1080, fps: '24', frames: 108, orientation: landscape}
+  - {id: scr_terminal_5033, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_terminal_s5033, kind: screen, scene: terminal, seed: 5033, width: 1920, height: 1080, fps: '30', frames: 90, orientation: landscape}
+  - {id: scr_sysmon_5034, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_sysmon_s5034, kind: screen, scene: sysmon, seed: 5034, width: 1920, height: 1080, fps: '24', frames: 168, orientation: landscape}
+  - {id: scr_sysmon_5035, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_sysmon_s5035, kind: screen, scene: sysmon, seed: 5035, width: 1920, height: 1080, fps: '30', frames: 180, orientation: landscape}
+  - {id: scr_sysmon_5036, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_sysmon_s5036, kind: screen, scene: sysmon, seed: 5036, width: 1920, height: 1080, fps: '60', frames: 180, orientation: landscape}
+  - {id: scr_dashboard_5037, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_dashboard_s5037, kind: screen, scene: dashboard, seed: 5037, width: 1920, height: 1080, fps: '30', frames: 300, orientation: landscape}
+  - {id: scr_dashboard_5038, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_dashboard_s5038, kind: screen, scene: dashboard, seed: 5038, width: 1920, height: 1080, fps: '60', frames: 240, orientation: landscape}
+  - {id: scr_dashboard_5039, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_dashboard_s5039, kind: screen, scene: dashboard, seed: 5039, width: 1920, height: 1080, fps: '60', frames: 420, orientation: landscape}
+  - {id: scr_dashboard_5040, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_dashboard_s5040, kind: screen, scene: dashboard, seed: 5040, width: 1920, height: 1080, fps: '60', frames: 270, orientation: landscape}
+  - {id: scr_dashboard_5041, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_dashboard_s5041, kind: screen, scene: dashboard, seed: 5041, width: 1920, height: 1080, fps: '60', frames: 270, orientation: landscape}
+  - {id: scr_dashboard_5042, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_dashboard_s5042, kind: screen, scene: dashboard, seed: 5042, width: 1920, height: 1080, fps: '30', frames: 210, orientation: landscape}
+  - {id: scr_multiples_5043p, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_multiples_s5043, kind: screen, scene: multiples, seed: 5043, width: 1080, height: 1920, fps: '60', frames: 240, orientation: portrait}
+  - {id: scr_multiples_5044p, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_multiples_s5044, kind: screen, scene: multiples, seed: 5044, width: 1080, height: 1920, fps: '60', frames: 420, orientation: portrait}
+  - {id: scr_multiples_5045, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_multiples_s5045, kind: screen, scene: multiples, seed: 5045, width: 1920, height: 1080, fps: '60', frames: 480, orientation: landscape}
+  - {id: scr_multiples_5046, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_multiples_s5046, kind: screen, scene: multiples, seed: 5046, width: 1920, height: 1080, fps: '60', frames: 600, orientation: landscape}
+  - {id: scr_multiples_5047, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_multiples_s5047, kind: screen, scene: multiples, seed: 5047, width: 1920, height: 1080, fps: '60', frames: 240, orientation: landscape}
+  - {id: scr_document_5048p, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_document_s5048, kind: screen, scene: document, seed: 5048, width: 1080, height: 1920, fps: '30', frames: 120, orientation: portrait}
+  - {id: scr_document_5049p, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_document_s5049, kind: screen, scene: document, seed: 5049, width: 1080, height: 1920, fps: '30', frames: 210, orientation: portrait}
+  - {id: scr_document_5050, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_document_s5050, kind: screen, scene: document, seed: 5050, width: 1920, height: 1080, fps: '24', frames: 96, orientation: landscape}
+  - {id: scr_document_5051, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_document_s5051, kind: screen, scene: document, seed: 5051, width: 1920, height: 1080, fps: '60', frames: 270, orientation: landscape}
+  - {id: scr_mail_5052, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_mail_s5052, kind: screen, scene: mail, seed: 5052, width: 1920, height: 1080, fps: '30', frames: 285, orientation: landscape}
+  - {id: scr_mail_5053, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_mail_s5053, kind: screen, scene: mail, seed: 5053, width: 1920, height: 1080, fps: '25', frames: 100, orientation: landscape}
+  - {id: scr_mail_5054, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_mail_s5054, kind: screen, scene: mail, seed: 5054, width: 1920, height: 1080, fps: '25', frames: 175, orientation: landscape}

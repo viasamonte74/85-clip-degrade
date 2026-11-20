@@ -1,0 +1,75 @@
+# Phase A pilot: 24 originals (12 3D-rendered, 6 screen, 6 real camera).
+# Frame numbers are the publisher's file numbering. 'group' is the split unit (parent film,
+# recording session or scene file); every clip of a group goes to the same split.
+# Durations: ~4 s x12, 6-8 s x7, ~10 s x5; portrait x5 (21 %).
+
+clips:
+  # ------------------------------------------------------------------ 3D rendered (12)
+  - {id: r3d_bbb3d_0104, category: 3d_rendered, subcategory: natural_environment, collection: xiph_bbb3d, group: film_big_buck_bunny,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/01_04/{n:04d}.png",
+     first: 101, frames: 240, fps: "60", source_crop: [4000, 2250, 0, 0], orientation: landscape}
+  - {id: r3d_bbb3d_0601, category: 3d_rendered, subcategory: fast_motion, collection: xiph_bbb3d, group: film_big_buck_bunny,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/06_01/{n:04d}.png",
+     first: 141, frames: 240, fps: "60", source_crop: [4000, 2250, 0, 0], orientation: landscape}
+  - {id: r3d_bbb3d_1002p, category: 3d_rendered, subcategory: natural_environment, collection: xiph_bbb3d, group: film_big_buck_bunny,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/BBB/bbb3d/video/png/10_02/{n:04d}.png",
+     first: 601, frames: 240, fps: "60", source_crop: [4000, 2250, 0, 0], orientation: portrait}
+  - {id: r3d_sintel_rooftop, category: 3d_rendered, subcategory: architecture_signs_text, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 4747, frames: 96, fps: "24", orientation: landscape, shot_from_proxy: [4743, 4875]}
+  - {id: r3d_sintel_city, category: 3d_rendered, subcategory: fast_motion, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 6948, frames: 180, fps: "24", orientation: landscape, shot_from_proxy: [6944, 7134]}
+  - {id: r3d_sintel_medallion, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: xiph_sintel4k, group: film_sintel,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/sintel/sintel-4k-png/{n:08d}.png",
+     first: 11203, frames: 144, fps: "24", orientation: landscape, shot_from_proxy: [11199, 11400]}
+  - {id: r3d_dweebs_a, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_dweebs8k, group: film_daily_dweebs,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/dweebs/tif_8k_mono/{n:06d}.tif",
+     first: 400, frames: 96, fps: "24", orientation: landscape, trim_to_longest_shot: true}
+  - {id: r3d_dweebs_bp, category: 3d_rendered, subcategory: cartoon_stylized, collection: xiph_dweebs8k, group: film_daily_dweebs,
+     kind: frames_http, url_pattern: "https://s3.amazonaws.com/xiph-media/media.xiph.org/dweebs/tif_8k_mono/{n:06d}.tif",
+     first: 900, frames: 96, fps: "24", orientation: portrait, trim_to_longest_shot: true}
+  - {id: r3d_own_gears, category: 3d_rendered, subcategory: mechanical_rotating, collection: own_blender_procedural, group: own_blender_gears_s11,
+     kind: blender, scene: gears, seed: 11, width: 1920, height: 1080, fps: "30", frames: 300, samples: 32, orientation: landscape}
+  - {id: r3d_own_signs, category: 3d_rendered, subcategory: architecture_signs_text, collection: own_blender_procedural, group: own_blender_signs_s12,
+     kind: blender, scene: signs, seed: 12, width: 1920, height: 1080, fps: "25", frames: 150, samples: 32, orientation: landscape}
+  - {id: r3d_own_ocean_p, category: 3d_rendered, subcategory: reflective_particles_fluids, collection: own_blender_procedural, group: own_blender_ocean_s13,
+     kind: blender, scene: ocean, seed: 13, width: 1080, height: 1920, fps: "30", frames: 120, samples: 32, orientation: portrait}
+  - {id: r3d_own_city, category: 3d_rendered, subcategory: fast_motion, collection: own_blender_procedural, group: own_blender_city_s14,
+     kind: blender, scene: city, seed: 14, width: 1920, height: 1080, fps: "60", frames: 240, samples: 32, orientation: landscape}
+
+  # ------------------------------------------------------------------ screen content (6)
+  - {id: scr_spreadsheet, category: screen, subcategory: spreadsheet, collection: own_screen_render, group: own_screen_spreadsheet_s201,
+     kind: screen, scene: spreadsheet, seed: 201, width: 1920, height: 1080, fps: "30", frames: 300, orientation: landscape}
+  - {id: scr_code, category: screen, subcategory: code_editor, collection: own_screen_render, group: own_screen_code_s202,
+     kind: screen, scene: code, seed: 202, width: 1920, height: 1080, fps: "60", frames: 360, orientation: landscape}
+  - {id: scr_terminal, category: screen, subcategory: terminal_logs, collection: own_screen_render, group: own_screen_terminal_s203,
+     kind: screen, scene: terminal, seed: 203, width: 1920, height: 1080, fps: "30", frames: 120, orientation: landscape}
+  - {id: scr_dashboard, category: screen, subcategory: dashboard_charts_tables, collection: own_screen_render, group: own_screen_dashboard_s204,
+     kind: screen, scene: dashboard, seed: 204, width: 1920, height: 1080, fps: "25", frames: 250, orientation: landscape}
+  - {id: scr_document, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_document_s205,
+     kind: screen, scene: document, seed: 205, width: 1920, height: 1080, fps: "60", frames: 240, orientation: landscape}
+  - {id: scr_phone_p, category: screen, subcategory: documents_ui, collection: own_screen_render, group: own_screen_phone_s206,
+     kind: screen, scene: document, seed: 206, width: 1080, height: 1920, fps: "30", frames: 180, orientation: portrait}
+
+  # ------------------------------------------------------------------ real camera (6)
+  - {id: cam_sparks_a, category: real_camera, subcategory: animals_foliage_nature, collection: netflix_sdr_segments, group: film_sparks,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/sparks/30-511.zip",
+     skip: 240, frames: 240, fps: "60000/1001", orientation: landscape, privacy_flag: true,
+     note: "members 240-479: the first 260 frames of this segment are a fade-in from black (rejected v1 used members 20-259)"}
+  - {id: cam_sparks_bp, category: real_camera, subcategory: low_light_motion_blur, collection: netflix_sdr_segments, group: film_sparks,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/sparks/5363-5763.zip",
+     skip: 20, frames: 240, fps: "60000/1001", orientation: portrait, privacy_flag: true}
+  - {id: cam_meridian, category: real_camera, subcategory: people_hands_activity, collection: netflix_sdr_segments, group: film_meridian,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/meridian/1782-2163.zip",
+     skip: 10, frames: 360, fps: "60000/1001", orientation: landscape, privacy_flag: true}
+  - {id: cam_nocturne, category: real_camera, subcategory: low_light_motion_blur, collection: netflix_sdr_segments, group: film_nocturne,
+     kind: zip_j2k, zip_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/aom_test_materials/SDR/nocturne/17140-17709.zip",
+     skip: 0, frames: 570, use_frames: 480, fps: "60", orientation: landscape, privacy_flag: true,
+     note: "the segment fades to black from about frame 490; the reference uses the first 480 (8.0 s)"}
+  - {id: cam_elfuente_boat, category: real_camera, subcategory: water_rain_reflections, collection: netflix_elfuente, group: film_el_fuente,
+     kind: y4m_range, y4m_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/ElFuente/Netflix_Boat_4096x2160_60fps_10bit_420.y4m",
+     first: 0, frames: 240, fps: "60", orientation: landscape}
+  - {id: cam_elfuente_market, category: real_camera, subcategory: urban_vehicles, collection: netflix_elfuente, group: film_el_fuente,
+     kind: y4m_range, y4m_url: "https://s3.amazonaws.com/download.opencontent.netflix.com/ElFuente/Netflix_FoodMarket_4096x2160_60fps_10bit_420.y4m",
+     first: 120, frames: 240, fps: "60", orientation: landscape, privacy_flag: true}

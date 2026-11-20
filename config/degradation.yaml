@@ -1,0 +1,105 @@
+# Second-order degradation recipe distribution, version 1.
+#
+# PUBLIC (practice-pack-006 README, "How the inputs were made"): the order of operations,
+# the five resize filter families, "intermediate size between the input size and about
+# 1.7x it", noise "often" and "stronger on dark clips", JPEG-style blocks "sometimes",
+# an optional slight second blur, an optional little more noise, H.264 or H.265 at
+# "roughly 1-3.5 Mbps at 540p and 0.3-1.1 Mbps at 270p, more at 50/60 fps", 2-second GOP.
+#
+# MEASURED on the CC0 practice inputs p02-p08 only (p01/p09/p10 are evaluation-only and
+# were never downloaded): 4 H.264 / 3 HEVC; 540p 0.91-1.70 Mbps (both HEVC items ~0.9),
+# 270p 0.41-0.44 Mbps; key frames every 2*fps frames plus scene-cut key frames (p03);
+# B-frames on; all 4.000 s; inputs tagged bt709 matrix, limited range, chroma "left".
+#
+# EVERYTHING ELSE BELOW IS AN EXPERIMENTAL ASSUMPTION. VidAIO has not published per-item
+# parameters or their distributions; nothing here claims to reproduce them.
+
+version: 1.2   # (1.2.1 = encoder threads 1; same recipes/seeds as 1.2, config digest changes)
+# v1.2 (calibration run v1_1 on CC0 p02-p08, 4 recipes x 48 frames each): x4 medians already
+# matched (PSNR 35.2 vs 35.4 dB, effective blur 0.60 vs 0.60 LR px); x2 was too sharp and too
+# noisy (HF-energy ratio 0.70 vs 0.21, noise sigma up to 3.0 vs <= 1.25). Stage-1 noise levels
+# lowered and stage-1 blur raised modestly; only 4 x2 items exist (2 are screen content), so
+# the change is deliberately small. Still experimental.
+# v1.1 (calibration on CC0 p02-p08 only): bitrate quantiles shifted down. All seven CC0
+# inputs sit at log-quantile <= 0.42 of the published ranges (540p: 0.91-1.70 Mbps; 270p:
+# 0.41-0.45 Mbps); under uniform draws that would happen with p ~ 0.002. The full
+# published range stays reachable (mild reaches 0.9 of it).
+pipeline: sn85ds-degradation/0.1.0
+
+difficulty_shares: {mild: 0.35, medium: 0.45, heavy: 0.20}   # assumption (task spec)
+
+stress_mode: false     # true widens blur sigma to 2.0 and JPEG quality to 50 (stress tests only)
+
+resize_filters:        # independent draws for resize 1 and resize 2 (assumption: equal-ish)
+  area: 0.22
+  bilinear: 0.18
+  bicubic: 0.24
+  lanczos: 0.18
+  spline: 0.18
+
+difficulty:
+  mild:
+    blur1: {p_none: 0.30, sigma: [0.3, 0.9]}
+    intermediate_scale: [1.2, 1.7]          # x final LR size (published bound: 1.0 .. ~1.7)
+    noise1: {p: 0.30, level: [0.5, 1.2]}    # level = std in 8-bit codes on mid grey
+    jpeg: {p: 0.08, quality: [85, 95]}
+    blur2: {p_none: 0.70, sigma: [0.2, 0.5]}
+    noise2: {p: 0.05, level: [0.3, 0.8]}
+    bitrate_quantile: [0.25, 0.90]          # position inside the factor's log bitrate range (v1.1, see header)
+  medium:
+    blur1: {p_none: 0.15, sigma: [0.6, 1.4]}
+    intermediate_scale: [1.0, 1.7]
+    noise1: {p: 0.60, level: [0.8, 2.2]}
+    jpeg: {p: 0.25, quality: [70, 90]}
+    blur2: {p_none: 0.50, sigma: [0.2, 0.7]}
+    noise2: {p: 0.15, level: [0.3, 1.2]}
+    bitrate_quantile: [0.05, 0.60]
+  heavy:
+    blur1: {p_none: 0.05, sigma: [1.0, 1.8]}
+    intermediate_scale: [1.0, 1.4]          # artefacts added close to the final size survive
+    noise1: {p: 0.85, level: [1.5, 3.5]}
+    jpeg: {p: 0.40, quality: [60, 85]}
+    blur2: {p_none: 0.40, sigma: [0.3, 0.8]}
+    noise2: {p: 0.30, level: [0.5, 1.5]}
+    bitrate_quantile: [0.00, 0.35]
+
+stress:
+  blur1_sigma_max: 2.0
+  jpeg_quality_min: 50
+
+blur1_shape:           # given that stage-1 blur applies
+  isotropic: 0.55
+  anisotropic: 0.40    # "sometimes stronger in one direction"
+  directional: 0.05    # optional line blur (assumption; low share)
+anisotropic_ratio: [0.3, 0.8]   # minor/major sigma
+directional_length_px: [2.0, 5.0]
+blur2_anisotropic_share: 0.2
+
+noise_model:
+  shot_fraction: [0.3, 0.9]
+  spatial_sigma: [0.0, 0.8]
+  spatial_none_share: 0.3
+  chroma: [0.2, 0.7]
+  temporal_rho: [0.0, 0.4]
+  dark_boost:                    # "often temporal sensor-like noise (stronger on dark clips)"
+    mean_luma_threshold: 0.30    # clip mean of non-linear luma (0..1)
+    p_min: 0.80                  # noise-1 probability floor on dark clips
+    level_gain: 1.0              # level *= 1 + gain * darkness, darkness in [0, 1]
+
+encode:
+  codec_weights: {h264: 0.6, hevc: 0.4}      # measured 4:3 on p02-p08; assumption beyond that
+  bitrate_kbps:                               # published ranges (<= 30 fps)
+    2: [1000, 3500]
+    4: [300, 1100]
+  hevc_low_extension: 0.8        # HEVC min bitrate x0.8 (p02/p04 HEVC at ~0.9 Mbps; assumption)
+  high_fps_threshold: 48
+  high_fps_multiplier: [1.3, 1.6]  # "more at 50/60 fps", value unpublished (assumption)
+  gop_seconds: 2.0               # keyint = round(2 * fps)
+  scenecut: true                 # extra key frames at cuts (seen in p03)
+  bframes: 3
+  preset_weights: {medium: 0.7, fast: 0.15, slow: 0.15}   # assumption
+  vbv_maxrate_factor: 1.5        # single-pass ABR + VBV (assumption; web-style)
+  vbv_bufsize_factor: 2.0
+  threads: 1                     # 1.2.1: x264 with 2 frame threads + VBV gave 3 different bitstreams in 6 runs
+                                 # under load; 1 thread is bit-exact (x265 was deterministic either way)
+  color_tags: bt709-limited      # all four tags (practice tags matrix + range only)

@@ -1,0 +1,10 @@
+# large binaries and local tooling: never commit
+data/
+third_party/
+logs/
+.venv/
+reports/contact_sheets/frames/
+metadata/*.lock
+__pycache__/
+*.egg-info/
+.pytest_cache/
